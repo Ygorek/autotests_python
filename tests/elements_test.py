@@ -1,3 +1,8 @@
+# allure setup and log
+# pytest -s -v .\tests\elements_test.py --alluredir=allureress
+# allure serve .\allureress\
+
+
 import time
 import random
 
@@ -68,7 +73,7 @@ class TestElements:
             table_result = web_table_page.check_search_person()
             # print(key_word)
             # print(table_result)
-            assert key_word in table_result , "the person was not found"
+            assert key_word in table_result, "the person was not found"
 
         def test_web_table_update_person_info(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
@@ -112,3 +117,11 @@ class TestElements:
             assert double == "You have done a double click" , "Dont double click"
             assert right == "You have done a right click", "Don't right click"
             assert click == "You have done a dynamic click", "Don't dynamic click"
+
+    # class TestLinksPage:
+    #
+    #     def test_check_link(self, driver):
+    #
+    #
+    #
+    #     def test_broken_link(self, driver):
