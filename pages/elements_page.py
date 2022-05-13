@@ -4,11 +4,13 @@ import time
 import random
 
 import requests
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person, generated_file
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators
+    WebTablePageLocators, ButtonsPageLocators, LinksPageLocators, UploadAndDownloadPageLocators, \
+    DynamicPropertiesloadPageLocators
 
 from pages.base_page import BasePage
 from selenium.webdriver.common.keys import Keys
@@ -189,6 +191,7 @@ class ButtonsPage(BasePage):
         return self.element_is_present(element).text
 
 class LinksPage(BasePage):
+
     locators = LinksPageLocators()
 
 
@@ -213,6 +216,7 @@ class LinksPage(BasePage):
             return request.status_code
 
 class UploadAndDownloadPage(BasePage):
+
     locators = UploadAndDownloadPageLocators()
 
     def upload_file(self):
@@ -235,5 +239,35 @@ class UploadAndDownloadPage(BasePage):
             check_file = os.path.exists(path_name_file)
             f.close()
         os.remove(path_name_file)
-
         return check_file
+
+class DynamicPropertiesloadPage(BasePage):
+
+    locators = DynamicPropertiesloadPageLocators()
+
+    def check_enable_button(self):
+        try:
+            self.element_is_clickable(self.locators.ENABLE_BUTTON, 6)
+        except TimeoutException:
+            return False
+        return True
+
+
+    def check_changed_of_color(self):
+        color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
+        color_button_before = color_button.value_of_css_property('color')
+        time.sleep(5)
+        color_button_after = color_button.value_of_css_property('color')
+        return color_button_before, color_button_after
+
+    def check_appear_button(self):
+        try:
+            self.element_is_visible(self.locators.VISIBLE_AFTER_FIVE_SEC_BUTTON)
+        except TimeoutException:
+            return False
+        return True
+
+
+
+
+

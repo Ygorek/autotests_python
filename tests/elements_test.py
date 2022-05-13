@@ -1,5 +1,5 @@
 # allure setup and log
-# pytest -s -v .\tests\elements_test.py --headless --alluredir=allureress
+# pytest -s -v .\tests\elements_test.py --alluredir=allureress
 # allure serve .\allureress\
 
 
@@ -7,7 +7,7 @@ import time
 import random
 
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage, \
-    UploadAndDownloadPage
+    UploadAndDownloadPage, DynamicPropertiesloadPage
 
 
 # UploadAndDownloadPage
@@ -150,3 +150,26 @@ class TestElements:
             upload_download_page.open()
             check = upload_download_page.download_file()
             assert check is True, "The file has not been downloaded."
+
+    class TestDynamicPropertiesPage:
+
+        def test_dynamic_properties(self, driver):
+            dynamic_properties_page = DynamicPropertiesloadPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            color_before, color_after = dynamic_properties_page.check_changed_of_color()
+            assert color_after != color_before, "color have not been changed"
+
+        def test_check_appear_button(self, driver):
+            dynamic_properties_page = DynamicPropertiesloadPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            appear = dynamic_properties_page.check_appear_button()
+            assert appear is True, "button did not appear after 5 seconds"
+
+        def test_enable_button(self, driver):
+            dynamic_properties_page = DynamicPropertiesloadPage(driver, 'https://demoqa.com/dynamic-properties')
+            dynamic_properties_page.open()
+            enable = dynamic_properties_page.check_enable_button()
+            assert enable is True, "button did not enable after 5 seconds"
+
+
+
