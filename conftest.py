@@ -9,7 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 def driver():
     #    driver = webdriver.Chrome(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless ")
+   # options.add_argument("--headless ")
     # or
     # options.headless = True
 
