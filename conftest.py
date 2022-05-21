@@ -9,13 +9,14 @@ from webdriver_manager.chrome import ChromeDriverManager
 def driver():
     #    driver = webdriver.Chrome(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
-   # options.add_argument("--headless ")
+    #options.add_argument("--headless ")
+    options.add_argument("--window-size=3840,2160")
     # or
     # options.headless = True
 
     driver = webdriver.Chrome(
         options=options,
         service=Service(ChromeDriverManager().install()))
-    driver.maximize_window()
+    #driver.maximize_window()
     yield driver
     driver.quit()

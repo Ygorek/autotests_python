@@ -1,5 +1,6 @@
 # allure setup and log
 # pytest -s -v -n=8 .\tests\elements_test.py --alluredir=allureress
+# pytest -s -v -n=8 .\tests\form_test.py .\tests\elements_test.py --alluredir=allureress
 # allure serve .\allureress\
 # pip install pytest-xdist
 # pip install pytest-rerunfailures 
@@ -173,6 +174,18 @@ class TestElements:
             dynamic_properties_page.open()
             enable = dynamic_properties_page.check_enable_button()
             assert enable is True, "button did not enable after 5 seconds"
+
+# class TestForms:
+#     class TestStudentRegistrationForm:
+#         def test_fill_registration_form(self, driver):
+#             student_registration_form_page = TestStudentRegistrationFormPage(driver, 'https://demoqa.com/automation-practice-form')
+#             student_registration_form_page.open()
+#             input_data = student_registration_form_page.fill_the_student_registration_form
+#             time.sleep(5)
+
+
+
+
 
 
 

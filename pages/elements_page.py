@@ -156,6 +156,7 @@ class WebTablePage(BasePage):
         return self.element_is_present(self.locators.NO_ROWS_FOUND).text
 
     def select_up_to_some_rows(self):
+        #self.zooming_page()
         count = [5,10,20,25,50,100]
         data = []
         for x in count:
@@ -266,6 +267,59 @@ class DynamicPropertiesloadPage(BasePage):
         except TimeoutException:
             return False
         return True
+
+
+# class TestStudentRegistrationFormPage(BasePage):
+#     locators = TestStudentRegistrationFormPageLocators()
+#
+#     def fill_the_student_registration_form(self):
+#         person_info = next(generated_person())
+#         first_name = person_info.firstname
+#         last_name = person_info.lastname
+#         email = person_info.email
+#         current_address = person_info.current_address
+#         subjects = person_info.permanent_address
+#         self.element_is_visible(self.locators.FIRST_NAME_INPUT).send_keys(first_name)
+#         self.element_is_visible(self.locators.LAST_NAME_INPUT).send_keys(last_name)
+#         self.element_is_visible(self.locators.EMAIL_INPUT).send_keys(email)
+#         self.element_is_visible(self.locators.GENDER_MALE_RADIOBUTTON).click()
+#         time.sleep(0)
+#         self.element_is_visible(self.locators.GENDER_FEMALE_RADIOBUTTON).click()
+#         time.sleep(0)
+#         self.element_is_visible(self.locators.GENDER_OTHER_RADIOBUTTON).click()
+#         time.sleep(0)
+#         self.element_is_visible(self.locators.MOBILE_INPUT).send_keys("1234567890")
+#         self.element_is_visible(self.locators.DATE_OF_BIRTH_INPUT).send_keys(Keys.CONTROL + 'a')
+#         self.element_is_visible(self.locators.DATE_OF_BIRTH_INPUT).send_keys("22 May 1980")
+#         self.element_is_visible(self.locators.DATE_OF_BIRTH_INPUT).send_keys(Keys.ENTER)
+#         self.element_is_visible(self.locators.HOBBIES_SPORT_BUTTON).click()
+#         self.element_is_visible(self.locators.HOBBIES_READING_BUTTON).click()
+#         self.element_is_visible(self.locators.HOBBIES_MUSIC_BUTTON).click()
+#         print(subjects)
+#         cur_address_place = self.element_is_present(self.locators.CURRENT_ADDRESS)
+#         self.go_to_element(cur_address_place)
+#         cur_address_place.send_keys(current_address + Keys.TAB + "NCR" + Keys.ENTER + Keys.TAB + "Delhi" + Keys.TAB)
+#
+#
+#         #self.element_is_visible(self.locators.STATE).click()
+#         #self.element_is_visible(self.locators.STATE2).send_keys(Keys.ENTER)
+#         # state2 = self.element_is_present(self.locators.STATE2)
+#         # state2.send_keys(Keys.ENTER)
+#         # state2.send_keys("NCR")
+#
+#
+#         # self.element_is_visible(self.locators.STATE).click()
+#         time.sleep(5)
+#         # self.element_is_visible(self.locators.SUBJECTS_INPUT).send_keys("subjects")
+#         #
+#         #
+#         #submit = self.element_is_present(self.locators.SUBMIT)
+#         #self.go_to_element(submit)
+#         #submit.click()
+#         # self.element_is_visible(self.locators.SUBMIT).send_keys(Keys.ENTER)
+#         time.sleep(5)
+#         return email, current_address, subjects
+
 
 
 

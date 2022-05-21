@@ -1,6 +1,8 @@
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.support.ui import WebDriverWait as wait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC, expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 class BasePage:
     def __init__(self, driver, url):
@@ -14,10 +16,10 @@ class BasePage:
         self.go_to_element(self.element_is_present(locator))
         return wait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 
-    def elements_are_visible(self, locator, timeout=5):
+    def elements_are_visible(self, locator, timeout=6):
         return wait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
 
-    def element_is_present(self, locator, timeout=5):
+    def element_is_present(self, locator, timeout=6):
         return wait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
     def elements_are_present(self, locator, timeout=5):
@@ -67,6 +69,11 @@ class BasePage:
 
         # "webdriver.ActionChains(driver).move_to_element(element ).click(element ).perform()
         # self.driver.execute_script("arguments[0].click();", element)
+
+    def click_by_script(self, element):
+        self.driver.execute_script("arguments[0].click();", element)
+
+
 
 
 
