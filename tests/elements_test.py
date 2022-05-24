@@ -4,7 +4,10 @@
 # pytest -s -v -n=8 .\tests\ --alluredir=allureress
 # allure serve .\allureress\
 # pip install pytest-xdist
-# pip install pytest-rerunfailures 
+# pip install pytest-rerunfailures
+# python -m venv venv
+# cd .\venv\Scripts\
+# .\activate для активации venv
 
 
 
