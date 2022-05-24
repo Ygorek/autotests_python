@@ -262,6 +262,7 @@ class DynamicPropertiesloadPage(BasePage):
         return color_button_before, color_button_after
 
     def check_appear_button(self):
+        time.sleep(1)
         try:
             self.element_is_visible(self.locators.VISIBLE_AFTER_FIVE_SEC_BUTTON)
         except TimeoutException:

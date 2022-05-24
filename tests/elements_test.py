@@ -1,6 +1,7 @@
 # allure setup and log
 # pytest -s -v -n=8 .\tests\elements_test.py --alluredir=allureress
 # pytest -s -v -n=8 .\tests\form_test.py .\tests\elements_test.py --alluredir=allureress
+# pytest -s -v -n=8 .\tests\ --alluredir=allureress
 # allure serve .\allureress\
 # pip install pytest-xdist
 # pip install pytest-rerunfailures 
