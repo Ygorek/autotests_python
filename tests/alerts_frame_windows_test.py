@@ -1,6 +1,6 @@
 import time
 
-from pages.alerts_frame_windows_page import BrowserWindowPage, AlertsPage, FramesPage, NestedFramesPage
+from pages.alerts_frame_windows_page import BrowserWindowPage, AlertsPage, FramesPage, NestedFramesPage, ModalDialogPage
 
 
 class TestAlertsFrameWindow:
@@ -18,11 +18,6 @@ class TestAlertsFrameWindow:
             new_window_page.open()
             text_result = new_window_page.check_opened_new_window()
             assert text_result == 'This is a sample page', "The new window has not opened or incorrect window had opened"
-
-        # def test_change_window_message(self, driver):
-        #     new_window_page = BrowserWindowPage(driver, 'https://demoqa.com/browser-windows')
-        #     new_window_page.open()
-        #     new_window_page.check_opened_new_window2()
 
 
 
@@ -71,3 +66,15 @@ class TestAlertsFrameWindow:
             parent_text, child_text = nested_frame_page.check_nested_frame()
             assert parent_text == 'Parent frame', "Nested frame does not exist"
             assert child_text == 'Child Iframe', "Nested frame does not exist"
+
+    class TestModalDialogPage:
+
+        def test_modal_dialog(self, driver):
+            modal_dialog_page = ModalDialogPage(driver, 'https://demoqa.com/modal-dialogs')
+            modal_dialog_page.open()
+            small, large = modal_dialog_page.check_modal_dialogs()
+            assert small[1] < large[1], 'text from small modal dialog is less than text from lagre modal dialog'
+            assert small[0] == 'Small Modal', 'the header is not "Small modal"'
+            assert large[0] == 'Large Modal', 'the header is not "Large modal"'
+
+
