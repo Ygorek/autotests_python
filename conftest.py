@@ -5,13 +5,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture(scope='function')
-
 def driver():
     #    driver = webdriver.Chrome(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless ")
+    # options.add_argument("--headless ")
     # or
-    # options.headless = True
+    options.headless = True
+    options.add_argument('--ignore-certificate-errors-spki-list')
 
     driver = webdriver.Chrome(
         options=options,
